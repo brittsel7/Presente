@@ -23,8 +23,8 @@ class AlumnoController{
         $pvd = new alumno();
 
         //Se obtienen los datos del alumno a editar.
-        if(isset($_REQUEST['persona_id'])){
-            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
+        if(isset($_REQUEST['id_estudiante'])){
+            $pvd = $this->model->Obtener($_REQUEST['id_estudiante']);
         }
 
         //Llamado de las vistas.
@@ -36,8 +36,8 @@ class AlumnoController{
         $pvd = new alumno();
 
         //Se obtienen los datos del alumno.
-        if(isset($_REQUEST['persona_id'])){
-            $pvd = $this->model->Obtener($_REQUEST['persona_id']);
+        if(isset($_REQUEST['id_estudiante'])){
+            $pvd = $this->model->Obtener($_REQUEST['id_estudiante']);
         }
 
         //Llamado de las vistas.
@@ -57,24 +57,17 @@ class AlumnoController{
     public function Guardar(){
         $pvd = new alumno();
 		$pc2 = new usuario();
-		$hash = password_hash($_REQUEST['persona_cui'], PASSWORD_BCRYPT);
+		$hash = password_hash($_REQUEST['txt_cui'], PASSWORD_BCRYPT);
         //Captura de los datos del formulario (vista).
-        $pvd->persona_id = $_REQUEST['persona_id'];
-        $pvd->persona_nombres = $_REQUEST['persona_nombres'];
-        $pvd->persona_apellido1 = $_REQUEST['persona_apellido1'];
-        $pvd->persona_apellido2 = $_REQUEST['persona_apellido2'];
-		$pvd->persona_tipo_id = $_REQUEST['persona_tipo_id'];
-        $pvd->persona_cui = $_REQUEST['persona_cui'];
-        $pvd->persona_direccion = $_REQUEST['persona_direccion'];
-        $pvd->persona_email = $_REQUEST['persona_email'];
-        $pvd->persona_telefono = $_REQUEST['persona_telefono'];
-        $pvd->persona_estado = $_REQUEST['persona_estado'];
+        $pvd->id_estudiante = $_REQUEST['id_estudiante'];
+        $pvd->txt_nombres = $_REQUEST['txt_nombres'];
+        $pvd->txt_apellido1 = $_REQUEST['txt_apellido1'];
+        $pvd->txt_apellido2 = $_REQUEST['txt_apellido2'];
+        $pvd->txt_cui = $_REQUEST['txt_cui'];
 		$pc2->usuario_id = $_REQUEST['usuario_id'];
-        $pc2->usuario_cuenta = $_REQUEST['persona_cui'];
+        $pc2->usuario_cuenta = $_REQUEST['txt_cui'];
         $pc2->usuario_password = $hash;
-        $pc2->usuario_rol_id = $_REQUEST['persona_tipo_id'];
-		$pc2->usuario_persona_id = 1;
-        $pc2->usuario_estado = $_REQUEST['persona_estado'];
+		$pc2->usuario_estudiante_id = 1;
         
         //Registro al modelo alumno.
         $this->model->Registrar($pvd);
@@ -91,15 +84,11 @@ class AlumnoController{
     public function Editar(){
         $pvd = new alumno();
 
-        $pvd->persona_id = $_REQUEST['persona_id'];
-        $pvd->persona_nombres = $_REQUEST['persona_nombres'];
-        $pvd->persona_apellido1 = $_REQUEST['persona_apellido1'];
-        $pvd->persona_apellido2 = $_REQUEST['persona_apellido2'];
-		$pvd->persona_tipo_id = $_REQUEST['persona_tipo_id'];
-        $pvd->persona_cui = $_REQUEST['persona_cui'];
-        $pvd->persona_direccion = $_REQUEST['persona_direccion'];
-        $pvd->persona_email = $_REQUEST['persona_email'];
-        $pvd->persona_telefono = $_REQUEST['persona_telefono'];
+        $pvd->id_estudiante = $_REQUEST['id_estudiante'];
+        $pvd->txt_nombres = $_REQUEST['txt_nombres'];
+        $pvd->txt_apellido1 = $_REQUEST['txt_apellido1'];
+        $pvd->txt_apellido2 = $_REQUEST['txt_apellido2'];
+        $pvd->txt_cui = $_REQUEST['txt_cui'];
 
         $this->model->Actualizar($pvd);
 
@@ -108,7 +97,7 @@ class AlumnoController{
 
     //Método que elimina la tupla proveedor con el nit dado.
     public function Eliminar(){
-        $this->model->Eliminar($_REQUEST['persona_id']);
+        $this->model->Eliminar($_REQUEST['id_estudiante']);
         header('Location: ../Vista/alumnoVista.php');
     }
 
@@ -123,15 +112,10 @@ class AlumnoController{
         foreach ($lineas as $linea_num => $linea) { 
             if($i != 0) { 
                 $datos = explode(",",$linea);
-                $pvd->persona_nombres = utf8_encode($datos[0]);
-                $pvd->persona_apellido1 = utf8_encode($datos[1]);
-                $pvd->persona_apellido2 = utf8_encode($datos[2]);
-                $pvd->persona_tipo_id = 1;
-                $pvd->persona_cui = $datos[4];
-                $pvd->persona_direccion = utf8_encode($datos[5]);
-                $pvd->persona_email = utf8_encode($datos[6]);
-                $pvd->persona_telefono = $datos[7];
-                $pvd->persona_estado = $datos[8];
+                $pvd->txt_nombres = utf8_encode($datos[0]);
+                $pvd->txt_apellido1 = utf8_encode($datos[1]);
+                $pvd->txt_apellido2 = utf8_encode($datos[2]);
+                $pvd->txt_cui = $datos[4];
 
                 $this->model->Registrar($pvd);
             }

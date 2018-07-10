@@ -30,8 +30,6 @@
                                         <tr>
                                             <th>Apellidos y Nombres</th>
                                             <th>CUI</th>
-                                            <th>Telefono</th>
-                                            <th>Email</th>
                                             
 											<?php
 												if($_SESSION['rol']==1){
@@ -47,19 +45,17 @@
                                     <tbody>
 									<?php foreach($this->model->Listar() as $r): ?>
                                         <tr class="odd gradeX">
-											<td><?php echo $r->persona_apellido1; ?> <?php echo $r->persona_apellido2; ?> <?php echo $r->persona_nombres; ?></td>
-											<td><?php echo $r->persona_cui; ?></td>
-											<td><?php echo $r->persona_telefono; ?></td>
-											<td><?php echo $r->persona_email; ?></td>
+											<td><?php echo $r->txt_apellido1; ?> <?php echo $r->txt_apellido2; ?> <?php echo $r->txt_nombres; ?></td>
+											<td><?php echo $r->txt_cui; ?></td>
 											<?php
 												if($_SESSION['rol']==1){
 											?>
-											<td class="center"><a href="?c=alumno&a=Crud&persona_id=<?php echo $r->persona_id; ?>">Editar</a></td>
-											<td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=alumno&a=Eliminar&persona_id=<?php echo $r->persona_id; ?>">Eliminar</a></td>
+											<td class="center"><a href="?c=alumno&a=Crud&id_estudiante=<?php echo $r->id_estudiante; ?>">Editar</a></td>
+											<td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=alumno&a=Eliminar&id_estudiante=<?php echo $r->id_estudiante; ?>">Eliminar</a></td>
 											<?php
 												}
 											?>
-											<td class="center"><a href="?c=alumno&a=Perfil&persona_id=<?php echo $r->persona_id; ?>">Ver</a></td>
+											<td class="center"><a href="?c=alumno&a=Perfil&id_estudiante=<?php echo $r->id_estudiante; ?>">Ver</a></td>
                                         </tr>                                        
                                     <?php endforeach; ?>    
                                     </tbody>

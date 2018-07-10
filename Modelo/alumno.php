@@ -5,15 +5,11 @@ class alumno
 	private $pdo;
 
 	//Atributos del objeto alumno
-    public $persona_id;
-    public $persona_nombres;
-    public $persona_apellido1;
-    public $persona_apellido2;
-	public $persona_tipo_id;
-	public $persona_cui;
-	public $persona_direccion;
-	public $persona_email;
-	public $persona_telefono;
+    public $id_estudiante;
+    public $txt_nombres;
+    public $txt_apellido1;
+    public $txt_apellido2;
+	public $txt_cui;
 	
 	
 
@@ -31,14 +27,14 @@ class alumno
 	}
 
 	//Este método selecciona todas las tuplas de la tabla
-	//persona en caso de error se muestra por pantalla.
+	//tbl_estudiante en caso de error se muestra por pantalla.
 	public function Listar()
 	{
 		try
 		{
 			$result = array();
 			//Sentencia SQL para selección de datos.
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 2) AND (persona_estado = 0)");
+			$stm = $this->pdo->prepare("SELECT * FROM tbl_estudiante WHERE (id_estudiante = 1) ");
 			//Ejecución de la sentencia SQL.
 			$stm->execute();
 			//fetchAll — Devuelve un array que contiene todas las filas del conjunto
@@ -54,15 +50,15 @@ class alumno
 
 	//Este método obtiene los datos del alumno a partir del nit
 	//utilizando SQL.
-	public function Obtener($persona_id)
+	public function Obtener($id_estudiante)
 	{
 		try
 		{
 			//Sentencia SQL para selección de datos utilizando
 			//la clausula Where para especificar el id del alumno.
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE persona_id = ?");
+			$stm = $this->pdo->prepare("SELECT * FROM tbl_estudiante WHERE id_estudiante = ?");
 			//Ejecución de la sentencia SQL utilizando el parámetro id.
-			$stm->execute(array($persona_id));
+			$stm->execute(array($id_estudiante));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e)
 		{
@@ -71,16 +67,16 @@ class alumno
 	}
 
 	//Este método elimina la tupla alumno dado un id.
-	public function Eliminar($persona_id)
+	public function Eliminar($id_estudiante)
 	{
 		try
 		{
 			//Sentencia SQL para eliminar una tupla utilizando
 			//la clausula Where.
 			$stm = $this->pdo
-			            ->prepare("UPDATE persona SET persona_estado = 1 WHERE persona_id = ?");
+			            ->prepare("UPDATE tbl_estudiante SET tbl_estudiante = 1 WHERE id_estudiante = ?");
 
-			$stm->execute(array($persona_id));
+			$stm->execute(array($id_estudiante));
 		} catch (Exception $e)
 		{
 			die($e->getMessage());
@@ -94,30 +90,23 @@ class alumno
 		try
 		{
 			//Sentencia SQL para actualizar los datos.
-			$sql = "UPDATE persona SET
-						persona_nombres          = ?,
-						persona_apellido1        = ?,
-						persona_apellido2        = ?,
-						persona_tipo_id			 = ?,
-						persona_cui				 = ?,
-						persona_direccion		 = ?,
-						persona_email			 = ?,
-						persona_telefono		 = ?
+			$sql = "UPDATE tbl_estudiante SET
+						txt_nombres          = ?,
+						txt_apellido1        = ?,
+						txt_apellido2        = ?,
+						id_estudiante			 = ?,
+						txt_cui				 = ?,
 						
-				    WHERE persona_id = ?";
+				    WHERE id_estudiante = ?";
 			//Ejecución de la sentencia a partir de un arreglo.
 			$this->pdo->prepare($sql)
 			     ->execute(
 				    array(
-                        $data->persona_nombres,
-                        $data->persona_apellido1,
-                        $data->persona_apellido2,
-                        $data->persona_tipo_id,
-						$data->persona_cui,
-                        $data->persona_direccion,
-                        $data->persona_email,
-                        $data->persona_telefono,
-						$data->persona_id
+                        $data->txt_nombres,
+                        $data->txt_apellido1,
+                        $data->txt_apellido2,
+                        $data->id_estudiante,
+						$data->txt_cui,
 
 					)
 				);
@@ -133,21 +122,17 @@ class alumno
 		try
 		{
 			//Sentencia SQL.
-			$sql = "INSERT INTO persona (persona_nombres,persona_apellido1,persona_apellido2,persona_tipo_id,persona_cui,persona_direccion,persona_email,persona_telefono, persona_estado)
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO tbl_estudiante (txt_nombres,txt_apellido1,txt_apellido2,id_estudiante,txt_cui)
+		        VALUES (?, ?, ?, ?, ?)";
 
 			$this->pdo->prepare($sql)
 		     ->execute(
 				array(
-						$data->persona_nombres,
-                        $data->persona_apellido1,
-                        $data->persona_apellido2,
-                        $data->persona_tipo_id,
-						$data->persona_cui,
-                        $data->persona_direccion,
-                        $data->persona_email,
-                        $data->persona_telefono,
-                        $data->persona_estado
+						$data->txt_nombres,
+                        $data->txt_apellido1,
+                        $data->txt_apellido2,
+                        $data->id_estudiante,
+						$data->txt_cui,
                 )
 			);
 		  return $this->pdo->lastInsertId();
@@ -165,8 +150,8 @@ class alumno
 		try
 		{
 			//Sentencia SQL.
-			$sql = "INSERT INTO usuario (usuario_cuenta,usuario_password,usuario_rol_id,usuario_persona_id,usuario_estado)
-		        VALUES (?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO usuario (usuario_cuenta,usuario_password,usuario_rol_id,usuario_estudiante_id)
+		        VALUES (?, ?, ?, ?)";
 
 			$this->pdo->prepare($sql)
 		     ->execute(
@@ -174,8 +159,7 @@ class alumno
 						$data->usuario_cuenta,
                         $data->usuario_password,
                         $data->usuario_rol_id,
-                        $data->usuario_persona_id,
-						$data->usuario_estado
+                        $data->usuario_estudiante_id,
                 )
 			);
 		} catch (Exception $e)

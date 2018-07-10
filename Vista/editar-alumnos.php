@@ -26,34 +26,21 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="Formulario">
 									<form role="form" id="frm-alumno" action="?c=alumno&a=Editar" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="persona_id" value="<?php echo $pvd->persona_id; ?>" />
-                                        <input type="hidden" name="persona_tipo_id" value="<?php echo $pvd->persona_tipo_id; ?>" />
+                                        <input type="hidden" name="id_estudiante" value="<?php echo $pvd->id_estudiante; ?>" />
 										<div class="form-group col-lg-12">
                                             <label>Nombres</label>
-											<input type="text" name="persona_nombres" value="<?php echo $pvd->persona_nombres; ?>" class="form-control" placeholder="Ingrese Nombre" data-validacion-tipo="requerido|min:100" />                                        </div>
+											<input type="text" name="txt_nombres" value="<?php echo $pvd->txt_nombres; ?>" class="form-control" placeholder="Ingrese Nombre" data-validacion-tipo="requerido|min:100" />                                        </div>
                                         <div class="form-group col-lg-6">
                                             <label>Primer Apellido</label>
-                                            <input class="form-control" name="persona_apellido1" value="<?php echo $pvd->persona_apellido1; ?>"  placeholder="Ingrese Primer Apellido">
+                                            <input class="form-control" name="txt_apellido1" value="<?php echo $pvd->txt_apellido1; ?>"  placeholder="Ingrese Primer Apellido">
                                         </div>
 										<div class="form-group col-lg-6">
                                             <label>Segundo Apellido</label>
-                                            <input class="form-control" name="persona_apellido2" value="<?php echo $pvd->persona_apellido2; ?>"  placeholder="Ingrese Segundo Apellido">
+                                            <input class="form-control" name="txt_apellido2" value="<?php echo $pvd->txt_apellido2; ?>"  placeholder="Ingrese Segundo Apellido">
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>CUI</label>
-                                            <input class="form-control" name="persona_cui" value="<?php echo $pvd->persona_cui; ?>"  placeholder="Ingrese CUI">
-                                        </div>
-										<div class="form-group col-lg-6">
-                                            <label>Correo Electrónico</label>
-                                            <input class="form-control" name="persona_email" value="<?php echo $pvd->persona_email; ?>"  placeholder="Ingrese Correo Electrónico">
-                                        </div>
-										<div class="form-group col-lg-12">
-                                            <label>Dirección</label>
-                                            <input class="form-control" name="persona_direccion" value="<?php echo $pvd->persona_direccion; ?>"  placeholder="Ingrese Dirección">
-                                        </div>
-										<div class="form-group col-lg-6">
-                                            <label>Teléfono</label>
-                                            <input class="form-control" name="persona_telefono" value="<?php echo $pvd->persona_telefono; ?>"  placeholder="Ingrese Teléfono">
+                                            <input class="form-control" name="txt_cui" value="<?php echo $pvd->txt_cui; ?>"  placeholder="Ingrese CUI">
                                         </div>
 										<br>
 										<div class="col-lg-12">

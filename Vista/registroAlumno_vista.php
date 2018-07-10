@@ -196,18 +196,6 @@ exit;
                                             <label>CUI</label>
                                             <input class="form-control" placeholder="Ingrese CUI">
                                         </div>
-										<div class="form-group col-lg-6">
-                                            <label>Correo Electrónico</label>
-                                            <input class="form-control" placeholder="Ingrese Correo Electrónico">
-                                        </div>
-										<div class="form-group col-lg-12">
-                                            <label>Dirección</label>
-                                            <input class="form-control" placeholder="Ingrese Dirección">
-                                        </div>
-										<div class="form-group col-lg-6">
-                                            <label>Teléfono</label>
-                                            <input class="form-control" placeholder="Ingrese Teléfono">
-                                        </div>
 										<br>
 										<div class="col-lg-12">
 											<button type="submit" class="btn btn-default ">Registrar</button>
