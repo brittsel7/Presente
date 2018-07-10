@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bienestar Social</title>
+    <title>Control de Asistencias</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading center">
-                        <h3 class="panel-title center"><center>Bienestar Social</center></h3>
+                        <h3 class="panel-title center"><center>CONTROL DE ASISTENCIAS</center></h3>
                     </div>
                     <div class="panel-body">
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">

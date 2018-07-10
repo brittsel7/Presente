@@ -5,7 +5,7 @@
 			
 			try {
 			
-				$conexion = new mysqli("localhost","root", "", "bd_epcc");
+				$conexion = new mysqli("localhost","root", "", "bd_presente");
         		$conexion->query("SET NAMES 'utf8'");
 			}
 			catch(Exception $e){
