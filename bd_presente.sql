@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-07-2018 a las 18:51:46
+-- Tiempo de generación: 10-07-2018 a las 22:14:35
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -74,8 +74,23 @@ CREATE TABLE `tbl_docente` (
   `txt_apellido1` varchar(45) NOT NULL,
   `txt_apellido2` varchar(45) DEFAULT NULL,
   `txt_dni` varchar(20) DEFAULT NULL,
-  `int_director` tinyint(4) DEFAULT NULL
+  `int_director` tinyint(4) DEFAULT '0',
+  `txt_telefono` varchar(15) NOT NULL,
+  `txt_email` varchar(30) NOT NULL,
+  `estado` varchar(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_docente`
+--
+
+INSERT INTO `tbl_docente` (`id_docente`, `txt_nombres`, `txt_apellido1`, `txt_apellido2`, `txt_dni`, `int_director`, `txt_telefono`, `txt_email`, `estado`) VALUES
+(2, 'Marco', 'aedo', 'Lopez', '123456789', 0, '562389', 'moisaxoiasxmoaosx', '1'),
+(3, 'yhdhf', 'ghfhgf', 'hgfhgf', '43543', 0, '564654', 'ghfhgf', '1'),
+(4, 'hola', 'hola', 'hola', '123', 0, '1234', 'asd', '0'),
+(5, 'Michael', 'Flores', 'Conislla', '12345678', 0, '942641962', 'parabritsel.com.pe', '1'),
+(6, 'Michurri', 'Michurri', 'Michurri', '1234567', 0, '2345790', 'tuchurri.com', '1'),
+(7, 'Britsel', 'Calluchi', 'Arocutipa', '72059863', 0, '942943057', 'milagros7@gmail.com', '0');
 
 -- --------------------------------------------------------
 
@@ -351,7 +366,7 @@ ALTER TABLE `tbl_curso`
 -- AUTO_INCREMENT de la tabla `tbl_docente`
 --
 ALTER TABLE `tbl_docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_escuela`
