@@ -46,15 +46,15 @@
                                     <tbody>
 									<?php foreach($this->model->Listar() as $r): ?>
                                         <tr class="odd gradeX">
-											<td><?php echo $r->persona_apellido1; ?> <?php echo $r->persona_apellido2; ?> <?php echo $r->persona_nombres; ?></td>
-											<td><?php echo $r->persona_dni; ?></td>
-											<td><?php echo $r->persona_telefono; ?></td>
-											<td><?php echo $r->persona_email; ?></td>
+											<td><?php echo $r->txt_nombres; ?> <?php echo $r->txt_apellido1; ?> <?php echo $r->txt_apellido2; ?></td>
+											<td><?php echo $r->txt_dni; ?></td>
+											<td><?php echo $r->txt_telefono; ?></td>
+											<td><?php echo $r->txt_email; ?></td>
 											<?php
 												if($_SESSION['rol']==1){
 											?>
-											<td class="center"><a href="?c=profesor&a=Crud&persona_id=<?php echo $r->persona_id; ?>">Editar</a></td>
-											<td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=profesor&a=Eliminar&persona_id=<?php echo $r->persona_id; ?>">Eliminar</a></td>
+											<td class="center"><a href="?c=profesor&a=Crud&id_docente=<?php echo $r->id_docente; ?>">Editar</a></td>
+											<td class="center"><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=profesor&a=Eliminar&id_docente=<?php echo $r->id_docente; ?>">Eliminar</a></td>
 											<?php
 												}
 											?>

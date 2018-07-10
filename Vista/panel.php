@@ -100,16 +100,9 @@ if($_SESSION['rol']==1){
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						<li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Notas<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="notasVista.php?c=notas&a=Nuevo">Agregar Notas</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-						<!-- /Usuarios -->
+						
+
+                        <!-- /Usuarios -->
 						
                     </ul>
                 </div>

@@ -3,15 +3,14 @@ class profesor
 {
 	private $pdo;
 
-    public $persona_id;
-    public $persona_nombres;
-    public $persona_apellido1;
-    public $persona_apellido2;
+    public $id_docente;
+    public $txt_nombres;
+    public $txt_apellido1;
+    public $txt_apellido2;
 	public $persona_tipo_id;
-	public $persona_dni;
-	public $persona_direccion;
-	public $persona_email;
-	public $persona_telefono;
+	public $txt_dni;
+	public $txt_email;
+	public $txt_telefono;
 	public $persona_estado;
 	
 	public function __CONSTRUCT()
@@ -31,7 +30,8 @@ class profesor
 		try
 		{
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE (persona_tipo_id = 3) AND (persona_estado = 0)");
+			//$stm = $this->pdo->prepare("SELECT * FROM tbl_docente WHERE (persona_tipo_id = 3) AND (persona_estado = 0)");
+			$stm = $this->pdo->prepare("SELECT * FROM tbl_docente WHERE estado='1'");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		}
@@ -45,7 +45,7 @@ class profesor
 	{
 		try
 		{
-			$stm = $this->pdo->prepare("SELECT * FROM persona WHERE persona_id = ?");
+			$stm = $this->pdo->prepare("SELECT * FROM tbl_docente WHERE id_docente = ?");
 			$stm->execute(array($persona_id));
 			return $stm->fetch(PDO::FETCH_OBJ);
 		} catch (Exception $e)
@@ -59,7 +59,7 @@ class profesor
 		try
 		{
 			$stm = $this->pdo
-			            ->prepare("UPDATE persona SET persona_estado = 1 WHERE persona_id = ?");
+			            ->prepare("UPDATE tbl_docente SET estado = 0 WHERE id_docente = ?");
 
 			$stm->execute(array($persona_id));
 		} catch (Exception $e)
@@ -72,29 +72,25 @@ class profesor
 	{
 		try
 		{
-			$sql = "UPDATE persona SET
-						persona_nombres          = ?,
-						persona_apellido1        = ?,
-						persona_apellido2        = ?,
-						persona_tipo_id			 = ?,
-						persona_dni				 = ?,
-						persona_direccion		 = ?,
-						persona_email			 = ?,
-						persona_telefono		 = ?
+			$sql = "UPDATE tbl_docente SET
+						txt_nombres          = ?,
+						txt_apellido1        = ?,
+						txt_apellido2        = ?,
+						txt_dni				 = ?,
+						txt_telefono		 = ?,
+						txt_email			 = ?
 						
-				    WHERE persona_id = ?";
+				    WHERE id_docente = ?";
 			$this->pdo->prepare($sql)
 			     ->execute(
 				    array(
-                        $data->persona_nombres,
-                        $data->persona_apellido1,
-                        $data->persona_apellido2,
-                        $data->persona_tipo_id,
-						$data->persona_dni,
-                        $data->persona_direccion,
-                        $data->persona_email,
-                        $data->persona_telefono,
-						$data->persona_id
+                        $data->txt_nombres,
+                        $data->txt_apellido1,
+                        $data->txt_apellido2,
+						$data->txt_dni,
+                        $data->txt_telefono,
+                        $data->txt_email,
+						$data->id_docente
 
 					)
 				);
@@ -108,21 +104,18 @@ class profesor
 	{
 		try
 		{
-			$sql = "INSERT INTO persona (persona_nombres,persona_apellido1,persona_apellido2,persona_tipo_id,persona_dni,persona_direccion,persona_email,persona_telefono, persona_estado)
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+			$sql = "INSERT INTO tbl_docente ( `txt_nombres`, `txt_apellido1`, `txt_apellido2`, `txt_dni`, `txt_telefono`, `txt_email`)
+		        VALUES (?, ?, ?, ?, ?,?)";
 
 			$this->pdo->prepare($sql)
 		     ->execute(
 				array(
-						$data->persona_nombres,
-                        $data->persona_apellido1,
-                        $data->persona_apellido2,
-                        $data->persona_tipo_id,
-						$data->persona_dni,
-                        $data->persona_direccion,
-                        $data->persona_email,
-                        $data->persona_telefono,
-                        $data->persona_estado
+						$data->txt_nombres,
+                        $data->txt_apellido1,
+                        $data->txt_apellido2,
+						$data->txt_dni,
+                        $data->txt_telefono,
+                        $data->txt_email
                 )
 			);
 		} catch (Exception $e)
